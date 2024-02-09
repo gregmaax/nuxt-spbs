@@ -2,6 +2,11 @@
 import { z } from 'zod'
 import type { FormSubmitEvent } from '#ui/types'
 
+const client = useSupabaseClient();
+const router = useRouter();
+const errorMsg = ref<string | null>(null);
+
+
 const schema = z.object({
   email: z.string().email('Invalid email'),
   password: z.string().min(8, 'Must be at least 8 characters')
@@ -15,8 +20,19 @@ const state = reactive({
 })
 
 async function onSubmit (event: FormSubmitEvent<Schema>) {
-  // Do something with data
-  console.log(event.data)
+  try {
+    const {data, error} = await client.auth.signInWithPassword({
+      email: event.data.email,
+      password: event.data.password,
+    });
+    console.log(data);
+    console.log(event.data);
+    if(error) throw error;
+    router.push("/");
+  } catch (error){
+    errorMsg.value = "Invalid credentials. Try again";
+    console.log(error);
+  }
 }
 </script>
 
@@ -33,6 +49,8 @@ async function onSubmit (event: FormSubmitEvent<Schema>) {
       <UFormGroup label="Password" name="password">
         <UInput v-model="state.password" type="password" />
       </UFormGroup>
+
+      <div v-if="errorMsg" class="text-red-700">{{errorMsg}}</div>
 
       <UButton type="submit">
         Sign in
