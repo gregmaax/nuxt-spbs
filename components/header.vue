@@ -1,23 +1,29 @@
 <script setup lang="ts">
-  const links = [{
-    label: 'Home',
-    to: '/'
-  },{
-    label: 'Items',
-    to: '/items'
-  },{
-    label: 'About',
-    to: '/about'
-  },{
-    label: 'Stephen A',
-    avatar: {
-      src: 'https://www.caa.com/caaspeakers/partyHeadshot/stephen-smith.png'
-    }
-  }]
+const user = useSupabaseUser();
+
+const links = [
+	{
+		label: 'Home',
+		to: '/',
+	},
+	{
+		label: 'Items',
+		to: '/items',
+	},
+	{
+		label: 'About',
+		to: '/about',
+	},
+];
 </script>
 
 <template>
-  <header>
-    <UHorizontalNavigation :links="links" class="flex gap-2 justify-center"/>
-  </header>
+	<header>
+		<div class="flex justify-center">
+			<UHorizontalNavigation
+				:links="links"
+				class="flex justify-center gap-2 max-w-[300px]"
+			/>
+		</div>
+	</header>
 </template>
