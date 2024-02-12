@@ -1,8 +1,6 @@
 <script setup lang="ts">
 import {z} from "zod";
 import type {FormSubmitEvent} from "#ui/types";
-import {AuthApiError, AuthError} from "@supabase/gotrue-js";
-
 //supabase
 const user = useSupabaseUser();
 const client = useSupabaseClient();
