@@ -31,10 +31,6 @@ const state = reactive({
 })
 
 //logic
-async function updateProfile() {
-
-
-}
 async function onSubmit (event: FormSubmitEvent<Schema>) {
   try {
     //loading.value = true

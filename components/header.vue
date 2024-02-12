@@ -8,7 +8,7 @@ const links = [
 	},
 	{
 		label: 'Restaurants',
-		to: '/items',
+		to: '/restaurants',
 	},
 	{
 		label: 'Profile',

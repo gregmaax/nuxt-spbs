@@ -3,7 +3,9 @@
 [x] Update profile form for auth users
 [x] Test profile form update
 
-[] Add a restaurant
+[X] Add a restaurant
 [] Add a category
-[] Fetch all restaurants
+[x] Fetch all restaurants
 [] Fetch all categories
+
+[] Title ui component for each page
